@@ -35,7 +35,8 @@ int main(int argc, char* argv[])
 	fp_send1 = fopen("cuc_ieschool.h264", "rb");
 
 	//初始化并连接到服务器
-	RTMP264_Connect("rtmp://192.168.0.5:1935/live");
+	//RTMP264_Connect("rtmp://192.168.0.5:1935/live");
+	RTMP264_Connect("rtmp://172.29.31.125:1935/rtmplive/home");
 	
 	//发送
 	RTMP264_Send(read_buffer1);

@@ -1,6 +1,4 @@
 INCLUDES 	 = -I./include/
-RTMP_LIBS    = ./lib/librtmp.a
-LIBS         = $(RTMP_LIBS)
 
 COMPILE_OPTS = $(INCLUDES)  -O2 -g
 C 			 = c
@@ -12,7 +10,7 @@ CPLUSPLUS_FLAGS = $(COMPILE_OPTS) -Wall -Wno-unused-but-set-variable  $(CPPFLAGS
 OBJ 		 =           o
 LINK 		 =  c++ -o
 LINK_OPTS    =  
-CONSOLE_LINK_OPTS = $(LINK_OPTS) -lpthread -lssl
+CONSOLE_LINK_OPTS = $(LINK_OPTS) -lpthread -lssl -lcrypto -lrtmp
 LINK_OBJ	 = simplest_librtmp_send264.o librtmp_send264.o
 
 APP = test
@@ -23,7 +21,7 @@ APP = test
 	$(CPLUSPLUS_COMPILER) -c $(CPLUSPLUS_FLAGS) $<
 
 $(APP): $(LINK_OBJ)
-	$(LINK)$@  $(LINK_OBJ)  $(LIBS) $(CONSOLE_LINK_OPTS)
+	$(LINK)$@  $(LINK_OBJ)  $(CONSOLE_LINK_OPTS)
 	
 clean:
 	-rm -rf *.$(OBJ) $(APP) core *.core *~ include/*~
